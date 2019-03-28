@@ -1,0 +1,45 @@
+[27-Mar-2019 15:54:09 Europe/Berlin] 
+Some wrong into this Class=> Exception 
+Error message=> this url is not exist!
+Error file location=> C:\xampp\htdocs\redtie\Core\Router.php in line: 102
+Error stack trace=> #0 C:\xampp\htdocs\redtie\Core\Router.php(50): Core\Router->dismatch()
+#1 C:\xampp\htdocs\redtie\route\web.php(4): Core\Router->setRoute('/{name}{family}', 'homeController@...')
+#2 C:\xampp\htdocs\redtie\public\index.php(11): include_once('C:\\xampp\\htdocs...')
+#3 {main}
+
+[27-Mar-2019 15:54:09 Europe/Berlin] 
+Some wrong into this Class=> Exception 
+Error message=> this url is not exist!
+Error file location=> C:\xampp\htdocs\redtie\Core\Router.php in line: 102
+Error stack trace=> #0 C:\xampp\htdocs\redtie\Core\Router.php(50): Core\Router->dismatch()
+#1 C:\xampp\htdocs\redtie\route\web.php(4): Core\Router->setRoute('/{name}{family}', 'homeController@...')
+#2 C:\xampp\htdocs\redtie\public\index.php(11): include_once('C:\\xampp\\htdocs...')
+#3 {main}
+
+[27-Mar-2019 15:54:16 Europe/Berlin] 
+Some wrong into this Class=> Exception 
+Error message=> this url is not exist!
+Error file location=> C:\xampp\htdocs\redtie\Core\Router.php in line: 102
+Error stack trace=> #0 C:\xampp\htdocs\redtie\Core\Router.php(50): Core\Router->dismatch()
+#1 C:\xampp\htdocs\redtie\route\web.php(4): Core\Router->setRoute('/{name}{family}', 'homeController@...')
+#2 C:\xampp\htdocs\redtie\public\index.php(11): include_once('C:\\xampp\\htdocs...')
+#3 {main}
+
+[27-Mar-2019 15:54:27 Europe/Berlin] 
+Some wrong into this Class=> Exception 
+Error message=> this url is not exist!
+Error file location=> C:\xampp\htdocs\redtie\Core\Router.php in line: 102
+Error stack trace=> #0 C:\xampp\htdocs\redtie\Core\Router.php(50): Core\Router->dismatch()
+#1 C:\xampp\htdocs\redtie\route\web.php(4): Core\Router->setRoute('/{name}{family}', 'homeController@...')
+#2 C:\xampp\htdocs\redtie\public\index.php(11): include_once('C:\\xampp\\htdocs...')
+#3 {main}
+
+[27-Mar-2019 15:54:27 Europe/Berlin] 
+Some wrong into this Class=> Exception 
+Error message=> this url is not exist!
+Error file location=> C:\xampp\htdocs\redtie\Core\Router.php in line: 102
+Error stack trace=> #0 C:\xampp\htdocs\redtie\Core\Router.php(50): Core\Router->dismatch()
+#1 C:\xampp\htdocs\redtie\route\web.php(4): Core\Router->setRoute('/{name}{family}', 'homeController@...')
+#2 C:\xampp\htdocs\redtie\public\index.php(11): include_once('C:\\xampp\\htdocs...')
+#3 {main}
+

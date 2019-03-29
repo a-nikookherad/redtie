@@ -1,10 +1,12 @@
 {
   "require": {
-    "philo/laravel-blade": "3.*"
+    "philo/laravel-blade": "3.*",
+    "catfan/medoo": "^1.6"
   },
   "autoload": {
     "files": [
-      "Core/helpers.php"
+      "Core/helpers.php",
+      "config.php"
     ],
     "psr-4": {
       "App\\": "App/",

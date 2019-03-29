@@ -1,6 +1,14 @@
 <?php
 namespace Core;
-class Controller
+abstract class Controller
 {
+    public function before()
+    {
 
+    }
+
+    public function after()
+    {
+
+    }
 }

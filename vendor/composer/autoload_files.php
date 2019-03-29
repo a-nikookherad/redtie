@@ -9,4 +9,5 @@ return array(
     '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => $vendorDir . '/symfony/polyfill-mbstring/bootstrap.php',
     '72579e7bd17821bb1321b87411366eae' => $vendorDir . '/illuminate/support/helpers.php',
     'feaf1d32edc4cf82460328a61c716bd2' => $baseDir . '/Core/helpers.php',
+    'cfe4039aa2a78ca88e07dadb7b1c6126' => $baseDir . '/config.php',
 );

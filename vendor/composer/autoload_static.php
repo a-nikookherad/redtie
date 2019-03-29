@@ -10,6 +10,7 @@ class ComposerStaticInit89296c855f52425320ffe3444b14310d
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         'feaf1d32edc4cf82460328a61c716bd2' => __DIR__ . '/../..' . '/Core/helpers.php',
+        'cfe4039aa2a78ca88e07dadb7b1c6126' => __DIR__ . '/../..' . '/config.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -27,6 +28,10 @@ class ComposerStaticInit89296c855f52425320ffe3444b14310d
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'Philo\\Blade\\' => 12,
+        ),
+        'M' => 
+        array (
+            'Medoo\\' => 6,
         ),
         'I' => 
         array (
@@ -89,6 +94,10 @@ class ComposerStaticInit89296c855f52425320ffe3444b14310d
         'Philo\\Blade\\' => 
         array (
             0 => __DIR__ . '/..' . '/philo/laravel-blade/src',
+        ),
+        'Medoo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/catfan/medoo/src',
         ),
         'Illuminate\\View\\' => 
         array (

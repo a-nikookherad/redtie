@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\defaults;
 use Core\View;
 
 class HomeController

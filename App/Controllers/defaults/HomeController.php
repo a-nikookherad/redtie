@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Controllers\defaults;
-
+use App\Controllers\Controller;
+use Core\MedooDB;
 use Core\View;
 
-class HomeController
+class HomeController extends Controller
 {
 
     public function home()
@@ -16,6 +17,9 @@ class HomeController
 
     public function index()
     {
-        echo View::bladeRender('404/404');
+        $medoo=new MedooDB();
+        $database=$medoo->database;
+        $arg=$database->select("users_tbl","*");
+        echo View::bladeRender('index',compact('arg'));
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
 namespace Core;
-
-
 use mysql_xdevapi\Exception;
 use Philo\Blade\Blade;
 
@@ -16,7 +14,8 @@ class View
         if (is_readable($file)){
             require_once $file;
         }else{
-            throw new \Exception("{$file} is not exist!");
+            self::render('404/404');
+            throw new \Exception("{$file} is not exist!",404);
         }
     }
 

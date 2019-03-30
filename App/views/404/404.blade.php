@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('title')
-    404
+    {{"404"}}
 @stop
 @section('content')
     <div class="bg-danger alert alert-danger alert-dismissible">

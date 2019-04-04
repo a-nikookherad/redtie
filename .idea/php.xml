@@ -36,6 +36,7 @@
       <path value="$PROJECT_DIR$/vendor/illuminate/auth" />
       <path value="$PROJECT_DIR$/vendor/illuminate/http" />
       <path value="$PROJECT_DIR$/vendor/illuminate/session" />
+      <path value="$PROJECT_DIR$/vendor/plasticbrain/php-flash-messages" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

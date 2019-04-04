@@ -39,6 +39,7 @@ class ComposerStaticInit89296c855f52425320ffe3444b14310d
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
+            'Plasticbrain\\FlashMessages\\' => 27,
             'Philo\\Blade\\' => 12,
         ),
         'O' => 
@@ -140,6 +141,10 @@ class ComposerStaticInit89296c855f52425320ffe3444b14310d
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Plasticbrain\\FlashMessages\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/plasticbrain/php-flash-messages/src',
         ),
         'Philo\\Blade\\' => 
         array (

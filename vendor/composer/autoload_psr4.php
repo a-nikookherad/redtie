@@ -21,6 +21,7 @@ return array(
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'Plasticbrain\\FlashMessages\\' => array($vendorDir . '/plasticbrain/php-flash-messages/src'),
     'Philo\\Blade\\' => array($vendorDir . '/philo/laravel-blade/src'),
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
     'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),

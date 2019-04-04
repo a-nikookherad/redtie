@@ -29,7 +29,6 @@ class Router
         $convertRoute = preg_replace('/\//', '\\/', $trimRoute);
         $this->routeRegex = preg_replace('/\{([a-z_]+)\}/', '(?<\1>[a-z0-9-_]+)', $convertRoute);
         $this->routeRegex = "/^" . $this->routeRegex . "$/i";
-
         // process action parameter and set controller & method & name space & middle ware property
         if (is_array($action)) {
             //run if action is array
@@ -39,7 +38,6 @@ class Router
         } else {
             list($this->controller, $this->method) = explode('@', $action);
         }
-
         // put all data to route array
         $data = [
             "controller" => $this->controller,
@@ -47,9 +45,7 @@ class Router
             "nameSpace" => $this->nameSpace,
             "middleWare" => $this->middleWare,
         ];
-
         $this->dismatch();
-
         if (!isset($this->middleWare) && empty($this->middleWare)) {
             unset($data["middleWare"]);
         }
@@ -59,23 +55,19 @@ class Router
         if (isset($this->parameters)) {
             $data["parameters"] = $this->parameters;
         }
-
         $this->route[$this->routeRegex] = $data;
-
     }
 
     /*check for match of uri and route And get parameters of route*/
     public function match()
     {
         if (preg_match($this->routeRegex, $this->uri, $matches)) {
-
             //get param with uri and set them to parameters property
             foreach ($matches as $key => $match) {
                 if (is_string($key)) {
                     $this->parameters[$key] = $match;
                 }
             }
-
             return true;
         } else {
             return false;
@@ -98,9 +90,9 @@ class Router
             } else {
                 throw new \Exception("class {$controller} is not exist");
             }
+            self::$is404=false;
         } else {
             self::$is404 = true;
-
         }
     }
 

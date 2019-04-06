@@ -19,3 +19,10 @@ if (!function_exists('view')) {
         require_once("App\views\\" . $input . ".php");
     }
 }
+
+if (!function_exists('readModules')){
+    function readModules($path){
+
+        require_once ($file);
+    }
+}

@@ -14,11 +14,13 @@ class Router
     private $controller;
     private $parameters = [];
     public static $is404 = false;
-
+    /*file property*/
+    private $path=[];
     public function __construct($uri)
     {
         $explodeUri = explode('?', $uri, 2);
         $this->setUri($explodeUri[0]);
+        $this->path=explode('/',$explodeUri[0]);
     }
 
     public function setRoute($route, $action)
@@ -61,6 +63,7 @@ class Router
     /*check for match of uri and route And get parameters of route*/
     public function match()
     {
+
         if (preg_match($this->routeRegex, $this->uri, $matches)) {
             //get param with uri and set them to parameters property
             foreach ($matches as $key => $match) {
@@ -69,6 +72,8 @@ class Router
                 }
             }
             return true;
+        }elseif(){
+
         } else {
             return false;
         }
@@ -111,6 +116,11 @@ class Router
         $uri = ltrim($uri, '/');
         $uri = rtrim($uri, '/');
         $this->uri = $uri;
+    }
+    /*===============read file method======================*/
+    public function readFile($fileName)
+    {
+
     }
 
 }

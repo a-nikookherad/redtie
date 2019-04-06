@@ -22,7 +22,7 @@ if (!function_exists('view')) {
 
 if (!function_exists('readModules')){
     function readModules($path){
-		$file=siteUrl.''
-        require_once ($file);
+//		$file=siteUrl.''
+//        require_once ($file);
     }
 }

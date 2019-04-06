@@ -5,10 +5,10 @@ use Medoo\Medoo;
 class MedooDB
 {
     public $database;
-    public function __construct($database_name='redtie',$server='127.0.0.1',$username='root',$password='')
+    public function __construct($database_type,$database_name='redtie',$server='127.0.0.1',$username='root',$password='')
     {
         $this->database = new Medoo([
-            'database_type' => 'mysql',
+            'database_type' => $database_type,
             'database_name' => $database_name,
             'server' => $server,
             'username' => $username,

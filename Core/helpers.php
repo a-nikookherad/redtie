@@ -1,5 +1,5 @@
 <?php
-
+include_once ("../config.php");
 if (!function_exists('dd')) {
     function dd($input1)
     {
@@ -16,13 +16,13 @@ if (!function_exists('view')) {
     function view($input)
     {
         $input = str_replace('.', '/', $input);
-        require_once("App\views\\" . $input . ".php");
+        require_once("App\\views\\" . $input . ".php");
     }
 }
 
 if (!function_exists('readModules')){
     function readModules($path){
-
+		$file=siteUrl.''
         require_once ($file);
     }
 }

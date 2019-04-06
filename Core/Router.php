@@ -20,7 +20,7 @@ class Router
     {
         $explodeUri = explode('?', $uri, 2);
         $this->setUri($explodeUri[0]);
-        $this->path=explode('/',$explodeUri[0]);
+        $this->path=explode('/', rtrim(ltrim($explodeUri[0] , '/'),'/'));
     }
 
     public function setRoute($route, $action)
@@ -60,6 +60,34 @@ class Router
         $this->route[$this->routeRegex] = $data;
     }
 
+	/*define class and method and parameters and call them if uri match with route and exist controller & method */
+	public function dismatch()
+	{
+		if ($this->match()) {
+			$run=false;
+			$file=siteUrl.'/modules/'.$this->path[0].'/mod-cp/'.
+			/*------------check class and methods(controllers)--------------*/
+			$controller = $this->nameSpace();
+			if (class_exists($controller)) {
+				$run=true;
+				$instanceOfController = new $controller;
+				if (isset($this->method) && method_exists($instanceOfController, $this->method) && is_callable([$instanceOfController, $this->method])) {
+					$method = $this->method;
+					call_user_func_array([$instanceOfController, $method], isset($this->parameters) ? $this->parameters : null);
+				} else {
+					throw new \Exception("method {$this->method} is not exist");
+				}
+			} elseif($run==false && $this->existFile()) {
+				$this->readFile();
+			}else{
+				throw new \Exception("class {$controller} is not exist");
+			}
+			self::$is404=false;
+		} else {
+			self::$is404 = true;
+		}
+	}
+
     /*check for match of uri and route And get parameters of route*/
     public function match()
     {
@@ -72,34 +100,14 @@ class Router
                 }
             }
             return true;
-        }elseif(){
-
+        }elseif(file_exists('../App/modules/'.$this->path[0] )){
+			return true;
         } else {
             return false;
         }
     }
 
-    /*define class and method and parameters and call them if uri match with route and exist controller & method */
-    public function dismatch()
-    {
-        if ($this->match()) {
-            $controller = $this->nameSpace();
-            if (class_exists($controller)) {
-                $instanceOfController = new $controller;
-                if (isset($this->method) && method_exists($instanceOfController, $this->method) && is_callable([$instanceOfController, $this->method])) {
-                    $method = $this->method;
-                    call_user_func_array([$instanceOfController, $method], isset($this->parameters) ? $this->parameters : null);
-                } else {
-                    throw new \Exception("method {$this->method} is not exist");
-                }
-            } else {
-                throw new \Exception("class {$controller} is not exist");
-            }
-            self::$is404=false;
-        } else {
-            self::$is404 = true;
-        }
-    }
+
 
     /*create name space for controller file*/
     public function nameSpace()

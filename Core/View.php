@@ -21,7 +21,7 @@ class View
 
     public static function bladeRender($template,$args=[])
     {
-        $view= realpath(__DIR__."/../App/views");
+        $view= realpath(__DIR__."/../App/Views");
         $cache= realpath(__DIR__."/../storage/views");
         $blade=new Blade($view,$cache);
         return $blade->view()->make($template,$args)->render();

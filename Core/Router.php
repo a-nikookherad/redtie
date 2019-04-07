@@ -68,13 +68,14 @@ class Router
 		if ($this->match()) {
 			$run=false;
 			/*------------check file exists*/
-			if( file_exists('../App/modules/'.$this->path[0])) {
+			if(!empty($this->path[0]) && file_exists('../App/Modules/'.$this->path[0])) {
 				$this->readFile();
 				$run=true;
 				self::$is404=false;
 			}
 			/*------------check class and methods(controllers)--------------*/
 			$controller = $this->name_Space();
+
 			if ($run==false && class_exists($controller)) {
 				$run=true;
 				$instanceOfController = new $controller;
@@ -134,8 +135,12 @@ class Router
     /*===============read file method======================*/
     public function readFile()
     {
+        $pos=substr($this->pathUrl,0, strpos($this->pathUrl,'/'));
+        $pathUrl=str_replace($pos,'',$this->pathUrl);
+        dd($pathUrl);
 		for($i=1;$i<sizeof($this->path);$i++){
-			$url=explode('/',$this->pathUrl,$i+1);
+		    $b=$i;
+			$url=explode('/',$this->pathUrl,$b++);
 			if (file_exists(siteUrl.'/Modules/'.$this->path[0].'/mode-cp/'.$url[$i].'.php')){
 				$file=siteUrl.'/Modules/'.$this->path[0].'/mode-cp/'.$url[$i].'.php';
 				require_once $file;

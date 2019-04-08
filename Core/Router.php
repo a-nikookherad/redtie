@@ -62,14 +62,38 @@ class Router
         $this->route[$this->routeRegex] = $data;
     }
 
+    /*===============read file method======================*/
+    public function readFile()
+    {
+
+
+        for($i=1;$i<sizeof($this->path);$i++){
+            $b=$i;
+            $url=explode('/',$this->pathUrl,$b++);
+            if (file_exists(siteUrl.'/Modules/'.$this->path[0].'/mode-cp/'.$url[$i].'.php')){
+                $file=siteUrl.'/Modules/'.$this->path[0].'/mode-cp/'.$url[$i].'.php';
+                require_once $file;
+
+            }else{
+                return false;
+            }
+        }
+    }
 	/*define class and method and parameters and call them if uri match with route and exist controller & method */
 	public function dismatch()
 	{
 		if ($this->match()) {
 			$run=false;
+            $pos=substr($this->pathUrl,0, strpos($this->pathUrl,'/'));
+            $pathUrl=str_replace($pos,'',$this->pathUrl);
 			/*------------check file exists*/
-			if(!empty($this->path[0]) && file_exists('../App/Modules/'.$this->path[0])) {
-				$this->readFile();
+			if(file_exists(siteUrl.'/App/Modules/'.$this->path[0].'/mod-cp'.$pathUrl.'.php')) {
+			    echo 'hello';
+//                $file=siteUrl.'/App/Modules/'.$this->path[0].'/mod-cp'.$pathUrl.'.php';
+//                require_once $file;
+//				$this->readFile();
+                $view=new View();
+                $view->render($pos,$pathUrl,[]);
 				$run=true;
 				self::$is404=false;
 			}
@@ -107,7 +131,7 @@ class Router
                 }
             }
             return true;
-        }elseif(file_exists('../App/modules/'.$this->path[0] )){
+        }elseif(!empty($this->path[0]) && file_exists('../App/Modules/'.$this->path[0] )){
 			return true;
         } else {
             return false;
@@ -132,22 +156,6 @@ class Router
         $uri = rtrim($uri, '/');
         $this->uri = $uri;
     }
-    /*===============read file method======================*/
-    public function readFile()
-    {
-        $pos=substr($this->pathUrl,0, strpos($this->pathUrl,'/'));
-        $pathUrl=str_replace($pos,'',$this->pathUrl);
-        dd($pathUrl);
-		for($i=1;$i<sizeof($this->path);$i++){
-		    $b=$i;
-			$url=explode('/',$this->pathUrl,$b++);
-			if (file_exists(siteUrl.'/Modules/'.$this->path[0].'/mode-cp/'.$url[$i].'.php')){
-				$file=siteUrl.'/Modules/'.$this->path[0].'/mode-cp/'.$url[$i].'.php';
-				require_once $file;
-			}else{
-				return false;
-			}
-		}
-    }
+
 
 }

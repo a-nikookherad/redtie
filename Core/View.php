@@ -6,11 +6,11 @@ use Philo\Blade\Blade;
 
 class View
 {
-    public static function render($view,$args=[])
+    public static function render($moduleName,$view,$args=[])
     {
         extract($args,EXTR_SKIP);
         preg_replace('/\./','\/',$view);
-        $file="../App/views/{$view}.php";
+        $file="../App/Modules/$moduleName/mod-cp/{$view}.php";
         if (is_readable($file)){
             require_once $file;
         }else{

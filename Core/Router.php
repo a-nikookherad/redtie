@@ -15,14 +15,15 @@ class Router
     private $parameters = [];
     public static $is404 = false;
     /*file property*/
-    private $path=[];
+    private $path = [];
     private $pathUrl;
+
     public function __construct($uri)
     {
         $explodeUri = explode('?', $uri, 2);
         $this->setUri($explodeUri[0]);
-        $this->path=explode('/', rtrim(ltrim($explodeUri[0] , '/'),'/'));
-        $this->pathUrl=rtrim(ltrim($explodeUri[0] , '/'),'/');
+        $this->path = explode('/', rtrim(ltrim($explodeUri[0], '/'), '/'));
+        $this->pathUrl = rtrim(ltrim($explodeUri[0], '/'), '/');
     }
 
     public function setRoute($route, $action)
@@ -62,67 +63,52 @@ class Router
         $this->route[$this->routeRegex] = $data;
     }
 
-    /*===============read file method======================*/
-    public function readFile()
+    /*define class and method and parameters and call them if uri match with route and exist controller & method */
+    public function dismatch()
     {
-
-
-        for($i=1;$i<sizeof($this->path);$i++){
-            $b=$i;
-            $url=explode('/',$this->pathUrl,$b++);
-            if (file_exists(siteUrl.'/Modules/'.$this->path[0].'/mode-cp/'.$url[$i].'.php')){
-                $file=siteUrl.'/Modules/'.$this->path[0].'/mode-cp/'.$url[$i].'.php';
-                require_once $file;
-
-            }else{
-                return false;
-            }
-        }
-    }
-	/*define class and method and parameters and call them if uri match with route and exist controller & method */
-	public function dismatch()
-	{
-		if ($this->match()) {
-			$run=false;
-            $pos=substr($this->pathUrl,0, strpos($this->pathUrl,'/'));
-            $pathUrl=str_replace($pos,'',$this->pathUrl);
-			/*------------check file exists*/
-			if(file_exists(siteUrl.'/App/Modules/'.$this->path[0].'/mod-cp'.$pathUrl.'.php')) {
-			    echo 'hello';
-//                $file=siteUrl.'/App/Modules/'.$this->path[0].'/mod-cp'.$pathUrl.'.php';
+        if ($this->match()) {
+            $run = false;
+            $pathUrl = $this->pathUrl;
+            $pos = substr($pathUrl, 0, strpos($pathUrl, '/'));
+            $pathUrl = str_replace($pos, '', $pathUrl);
+            /*------------check file exists*/
+            if (file_exists(__DIR__ . '/../App/Modules/' . $this->path[0] . '/mod-cp' . $pathUrl . '.php')) {
+                $file = __DIR__ . '/../App/Modules/' . $this->path[0] . '/mod-cp' . $pathUrl . '.php';
 //                require_once $file;
 //				$this->readFile();
-                $view=new View();
-                $view->render($pos,$pathUrl,[]);
-				$run=true;
-				self::$is404=false;
-			}
-			/*------------check class and methods(controllers)--------------*/
-			$controller = $this->name_Space();
+                $view = new View();
+                $view->render($file, []);
+                $run = true;
+                self::$is404 = false;
+            }
+            /*------------check class and methods(controllers)--------------*/
+            $controller = $this->name_Space();
 
-			if ($run==false && class_exists($controller)) {
-				$run=true;
-				$instanceOfController = new $controller;
-				if (isset($this->method) && method_exists($instanceOfController, $this->method) && is_callable([$instanceOfController, $this->method])) {
-					$method = $this->method;
-					call_user_func_array([$instanceOfController, $method], isset($this->parameters) ? $this->parameters : null);
-				} else {
-					throw new \Exception("method {$this->method} is not exist");
-				}
-			}else{
-				throw new \Exception("class {$controller} is not exist");
-			}
-
-			self::$is404=false;
-		} else {
-			self::$is404 = true;
-		}
-	}
+            if ($run == false) {
+                if (class_exists($controller)) {
+                    $instanceOfController = new $controller;
+                    if (isset($this->method) && method_exists($instanceOfController, $this->method) && is_callable([$instanceOfController, $this->method])) {
+                        $method = $this->method;
+                        call_user_func_array([$instanceOfController, $method], isset($this->parameters) ? $this->parameters : null);
+                    } else {
+                        throw new \Exception("method {$this->method} is not exist");
+                    }
+                    self::$is404 = false;
+                } else {
+                    throw new \Exception("class {$controller} is not exist");
+                }
+            }
+        } else {
+            self::$is404 = true;
+        }
+    }
 
     /*check for match of uri and route And get parameters of route*/
     public function match()
     {
-
+        $pathUrl = $this->pathUrl;
+        $pos = substr($pathUrl, 0, strpos($pathUrl, '/'));
+        $pathUrl = str_replace($pos, '', $pathUrl);
         if (preg_match($this->routeRegex, $this->uri, $matches)) {
             //get param with uri and set them to parameters property
             foreach ($matches as $key => $match) {
@@ -131,13 +117,13 @@ class Router
                 }
             }
             return true;
-        }elseif(!empty($this->path[0]) && file_exists('../App/Modules/'.$this->path[0] )){
-			return true;
+            /*------------check file exists*/
+        } elseif (!empty($this->path[0]) && file_exists(__DIR__ . '/../App/Modules/' . $this->path[0] . '/mod-cp' . $pathUrl . '.php')) {
+            return true;
         } else {
             return false;
         }
     }
-
 
 
     /*create name space for controller file*/

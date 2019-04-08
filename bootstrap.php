@@ -8,7 +8,11 @@ set_error_handler('Core\Error::errorHandler');
 set_exception_handler('Core\Error::errorException');
 
 
-/*=================database connection information=============================*/
+/*=================database connection information===================*/
+/*---------------eloquent connection-----------*/
+use Core\Capsule;
+new Capsule();
+/*---------------medoo connection -----------*/
 	$database_type='mysql';
 	$database_name='';
 	$server='localhost';

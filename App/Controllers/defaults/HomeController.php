@@ -2,11 +2,9 @@
 
 namespace App\Controllers\defaults;
 use App\Controllers\Controller;
-use Core\MedooDB;
+use App\User;
 use Core\View;
-global $database;
-$medoo=new MedooDB();
-$database=$medoo->database;
+
 class HomeController extends Controller
 {
 
@@ -19,8 +17,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        global $database;
-        $arg=$database->select("users_tbl","*");
+        $arg=User::find(1)->username;
         echo View::bladeRender('index',compact('arg'));
     }
 }

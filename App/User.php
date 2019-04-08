@@ -1,10 +1,8 @@
-<?php
+<?php namespace App;
+use Core\Model;
 
-namespace App;
-
-use Core\MedooDB;
-
-class User extends MedooDB
+class User extends Model
 {
     protected $table='users_tbl';
 }
+

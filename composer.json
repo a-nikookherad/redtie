@@ -3,7 +3,8 @@
     "philo/laravel-blade": "3.*",
     "catfan/medoo": "^1.6",
     "respect/validation": "^1.1",
-    "plasticbrain/php-flash-messages": "^1.0"
+    "plasticbrain/php-flash-messages": "^1.0",
+    "illuminate/database": "^5.8"
   },
   "autoload": {
     "files": [

@@ -1,11 +1,6 @@
-<?php
-namespace Core;
-abstract class Model
+<?php namespace Core;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+class Model extends Eloquent
 {
-    protected $table=null;
 
-    public function __construct()
-    {
-        
-    }
 }

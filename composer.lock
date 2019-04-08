@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "099cb82afb9043c0f853b1c5d0bd0f02",
+    "content-hash": "7788d7cc4c6dadb1e1529dbc66615e96",
     "packages": [
         {
             "name": "catfan/medoo",
@@ -325,16 +325,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v5.8.8",
+            "version": "v5.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "05a0f0b4588b6376bfc7213e1a781dd8120e7c8e"
+                "reference": "4d5fd9170c8e8afba599cffd20744b7d8787ac79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/05a0f0b4588b6376bfc7213e1a781dd8120e7c8e",
-                "reference": "05a0f0b4588b6376bfc7213e1a781dd8120e7c8e",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/4d5fd9170c8e8afba599cffd20744b7d8787ac79",
+                "reference": "4d5fd9170c8e8afba599cffd20744b7d8787ac79",
                 "shasum": ""
             },
             "require": {
@@ -381,7 +381,7 @@
                 "orm",
                 "sql"
             ],
-            "time": "2019-03-26T17:13:31+00:00"
+            "time": "2019-04-01T05:04:37+00:00"
         },
         {
             "name": "illuminate/events",

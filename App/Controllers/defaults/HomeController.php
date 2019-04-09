@@ -20,4 +20,9 @@ class HomeController extends Controller
         $arg=User::find(1)->username;
         echo View::bladeRender('index',compact('arg'));
     }
+
+    public function login()
+    {
+        echo View::bladeRender('auth.login');
+    }
 }

@@ -6,6 +6,7 @@ use Core\View;
 //home controller route
 $route->setRoute('home', 'defaults\homeController@index');
 $route->setRoute('/', 'defaults\homeController@home');
+$route->setRoute('login', 'defaults\homeController@login');
 
 
 //admin controller route

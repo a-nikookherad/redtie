@@ -8,7 +8,6 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 	<title>404 HTML Template by Colorlib</title>
-
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand:700" rel="stylesheet">
 

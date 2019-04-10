@@ -11,7 +11,7 @@ $route->setRoute('login', 'defaults\homeController@login');
 
 //admin controller route
 
-
+$route->setRoute('dashboard','admin\AdminController@dashboard');
 
 
 

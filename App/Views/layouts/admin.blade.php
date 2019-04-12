@@ -19,7 +19,7 @@
 
 <div class="container-fluid">
     <div class="row d-flex d-md-block flex-nowrap wrapper">
-        <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
+        <div class="col-md-3 float-right col-1 pl-0 pr-0 collapse width show " id="sidebar">
             <div class="list-group border-0 card text-center text-md-left">
                 <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Item 1</span> </a>
                 <div class="collapse" id="menu1" data-parent="#sidebar">
@@ -80,8 +80,8 @@
                 <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-star"></i> <span class="d-none d-md-inline">Link</span></a>
             </div>
         </div>
-        <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
-            <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>
+        <main class="col-md-9 float-right col px-3 pl-md-2 pt-2 main text-right">
+            <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-list fa-2x py-2 p-1"></i></a>
             <div class="page-header">
                 <h2>Bootstrap 4 Sidebar Menu</h2>
             </div>

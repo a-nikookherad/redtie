@@ -13,16 +13,20 @@ class Router
     private $method;
     private $controller;
     private $parameters = [];
-    public static $is404 = false;
-    /*file property*/
+	public static $is404 = true;
+
+	/*------file property---------*/
     private $path = [];
     private $pathUrl;
 
     public function __construct($uri)
     {
         $explodeUri = explode('?', $uri, 2);
-        $this->setUri($explodeUri[0]);
-        $this->path = explode('/', rtrim(ltrim($explodeUri[0], '/'), '/'));
+		$uri = $explodeUri[0];
+		$queryString = $explodeUri[1];
+		$uri = ltrim($uri , '/');
+		$this->uri = $uri = rtrim($uri , '/');
+		$this->path = explode('/' , $uri);
         $this->pathUrl = rtrim(ltrim($explodeUri[0], '/'), '/');
     }
 
@@ -67,39 +71,31 @@ class Router
     public function dismatch()
     {
         if ($this->match()) {
-            $run = false;
-            $pathUrl = $this->pathUrl;
-            $pos = substr($pathUrl, 0, strpos($pathUrl, '/'));
-            $pathUrl = str_replace($pos, '', $pathUrl);
-            /*------------check file exists*/
-            if (file_exists(__DIR__ . '/../App/Modules/' . $this->path[0] . '/mod-cp' . $pathUrl . '.php')) {
-                $file = __DIR__ . '/../App/Modules/' . $this->path[0] . '/mod-cp' . $pathUrl . '.php';
-//                require_once $file;
-//				$this->readFile();
-                $view = new View();
-                $view->render($file, []);
-                $run = true;
-                self::$is404 = false;
-            }
+			/*-------------------check file exists---------------------*/
+			$pathUrl = $this->pathUrl;
+			$moduleName = $this->path[0];
+			$pos = substr($pathUrl , 0 , strpos($pathUrl , '/'));
+			$pathUrl = str_replace($pos , '' , $pathUrl);
+			if (file_exists(__DIR__ . '/../App/Modules/' . $moduleName . '/mod-cp' . $pathUrl . '.php')) {
+				$file = __DIR__ . '/../App/Modules/' . $moduleName . '/mod-cp' . $pathUrl . '.php';
+				View::viewRender($file , []);
+				self::$is404 = false;
+				return;
+			}
             /*------------check class and methods(controllers)--------------*/
-            $controller = $this->name_Space();
-
-            if ($run == false) {
-                if (class_exists($controller)) {
-                    $instanceOfController = new $controller;
-                    if (isset($this->method) && method_exists($instanceOfController, $this->method) && is_callable([$instanceOfController, $this->method])) {
-                        $method = $this->method;
-                        call_user_func_array([$instanceOfController, $method], isset($this->parameters) ? $this->parameters : null);
-                    } else {
-                        throw new \Exception("method {$this->method} is not exist");
-                    }
-                    self::$is404 = false;
-                } else {
-                    throw new \Exception("class {$controller} is not exist");
-                }
-            }
-        } else {
-            self::$is404 = true;
+			$controller = $this->name_Space();
+			if (class_exists($controller)) {
+				self::$is404 = false;
+				$instanceOfController = new $controller;
+				if (isset($this->method) && method_exists($instanceOfController , $this->method) && is_callable([$instanceOfController , $this->method])) {
+					$method = $this->method;
+					call_user_func_array([$instanceOfController , $method] , isset($this->parameters) ? $this->parameters : null);
+				} else {
+					throw new \Exception("method {$this->method} is not exist");
+				}
+			} else {
+				throw new \Exception("class {$controller} is not exist");
+			}
         }
     }
 
@@ -138,9 +134,8 @@ class Router
 
     public function setUri($uri)
     {
-        $uri = ltrim($uri, '/');
-        $uri = rtrim($uri, '/');
-        $this->uri = $uri;
+
+		$this->uri = $uri;
     }
 
 

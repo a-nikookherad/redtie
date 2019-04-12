@@ -19,7 +19,7 @@ new Capsule();
 	$username='';
 	$password='';
 	global $database;
-	$database = new \Core\MedooDB($database_type,$database_name,$server,$username,$password);
+$database = new \Core\Medoo($database_type , $database_name , $server , $username , $password);
 /*-----------------------------------------------------------------------------*/
 define('protocol',$_SERVER['REQUEST_SCHEME'].'://');
 define('host',$_SERVER['HTTP_HOST']);

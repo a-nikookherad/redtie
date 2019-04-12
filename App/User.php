@@ -1,7 +1,8 @@
 <?php namespace App;
-use Core\Model;
 
-class User extends Model
+use Core\Eloquent;
+
+class User extends Eloquent
 {
     protected $table='users';
 }

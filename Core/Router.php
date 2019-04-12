@@ -5,25 +5,25 @@ namespace Core;
 //use mysql_xdevapi\Exception;
 class Router
 {
-    protected $uri;
-    private $route = [];
-    private $routeRegex;
-    private $middleWare;
-    public $nameSpace;
-    private $method;
-    private $controller;
+	private $route = [];
+	private $routeRegex;
+	protected $uri;
+	protected $queryString;
+	public $nameSpace;
+	private $middleWare;
+	private $controller;
+	private $method;
     private $parameters = [];
-	public static $is404 = true;
-
 	/*------file property---------*/
-    private $path = [];
-    private $pathUrl;
+	public static $is404 = true;
+	private $path = [];
+	private $pathUrl;
 
     public function __construct($uri)
     {
         $explodeUri = explode('?', $uri, 2);
 		$uri = $explodeUri[0];
-		$queryString = $explodeUri[1];
+		$this->queryString = isset($explodeUri[1]) ? $explodeUri[1] : null;
 		$uri = ltrim($uri , '/');
 		$this->uri = $uri = rtrim($uri , '/');
 		$this->path = explode('/' , $uri);

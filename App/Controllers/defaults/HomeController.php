@@ -23,6 +23,6 @@ class HomeController extends Controller
 
     public function login()
     {
-        echo View::bladeRender('auth.login');
+		echo View::bladeRender('partials.auth.login');
     }
 }

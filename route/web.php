@@ -16,15 +16,9 @@ $route->setRoute('dashboard','admin\AdminController@dashboard');
 
 
 
-
-
-
-
-
 /*===============================>page not found <======================================*/
 if (Router::$is404 == 1) {
-	dd(Router::$is404);
-    echo View::bladeRender('404/404');
+    echo View::bladeRender('partials/404/404');
 //    throw new \Exception("this url is not exist!", 404);
 
 }

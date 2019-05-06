@@ -4,7 +4,7 @@ namespace Core;
 use mysql_xdevapi\Exception;
 use Philo\Blade\Blade;
 
-class View
+class Views
 {
 	public static function viewRender($file , $args = [])
     {
@@ -19,9 +19,9 @@ class View
 
     public static function bladeRender($template,$args=[])
     {
-        $view= realpath(__DIR__."/../App/Views");
+		$view = realpath(__DIR__ . "/../resources/views");
         $cache= realpath(__DIR__."/../storage/views");
         $blade=new Blade($view,$cache);
-        return $blade->view()->make($template,$args)->render();
+		echo $blade->view()->make($template , $args)->render();
     }
 }

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Controllers\defaults;
-use App\Controllers\Controller;
+namespace App\Http\Controllers\defaults;
+
+use App\Http\Controllers\Controller;
 use App\User;
-use Core\View;
+use Core\Views;
 
 class HomeController extends Controller
 {
@@ -12,17 +13,17 @@ class HomeController extends Controller
     {
 //	  $varible=['name'=>$name,'family'=>$family,'age'=>[1,2,3,4]];
 //    return View::render('home/home',$varible);
-        echo View::bladeRender('home/home');
+		echo Views::bladeRender('home/home');
     }
 
     public function index()
     {
         $arg=User::find(1)->username;
-        echo View::bladeRender('index',compact('arg'));
+		echo Views::bladeRender('index' , compact('arg'));
     }
 
     public function login()
     {
-		echo View::bladeRender('partials.auth.login');
+		echo Views::bladeRender('partials.auth.login');
     }
 }

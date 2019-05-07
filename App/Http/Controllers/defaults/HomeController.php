@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $arg=User::find(1)->username;
+		$arg = User::find(1);
 		echo Views::bladeRender('index' , compact('arg'));
     }
 

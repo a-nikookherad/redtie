@@ -8,6 +8,11 @@ class AdminController
 {
 	public function dashboard()
 	{
-		echo Views::bladeRender('admin.dashboard');
+		Views::bladeRender('admin.dashboard');
+	}
+
+	public function who()
+	{
+		Views::bladeRender('admin.whoAmI.whoAmI');
 	}
 }

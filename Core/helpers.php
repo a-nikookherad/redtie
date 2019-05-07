@@ -36,3 +36,22 @@ if (!function_exists('views')) {
 		\Core\Views::bladeRender($input , $arg);
 	}
 }
+
+if (!function_exists('route')) {
+	function route($route , $action)
+	{
+		$router = new \Core\Router();
+		$router->setRoute($route , $action);
+	}
+}
+
+if (!function_exists('redirect_js')) {
+	function redirect_js($url)
+	{
+		$script = '
+		<script>
+			window.location.href = "' . $url . '";
+		</script>';
+		echo $script;
+	}
+}

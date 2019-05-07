@@ -1,3 +1,0 @@
-@php
-dd($arg);
-@endphp

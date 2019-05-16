@@ -15,7 +15,6 @@ $route->setRoute('dashboard','admin\AdminController@dashboard');
 $route->setRoute('dashboard/whoami' , 'admin\AdminController@who');
 
 
-
 /*===============================>page not found <======================================*/
 if (Router::$is404 == 1) {
 	echo Views::bladeRender('partials/404/404');
